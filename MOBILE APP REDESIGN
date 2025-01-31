@@ -1,0 +1,214 @@
+/*LENSKART APP REDESIGN*/
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lenskart App Redesign</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        
+        .sticky-footer button {
+            transition: color 0.3s ease;
+        }
+        .sticky-footer button:hover {
+            color: #1d4ed8;
+        }
+        .category-card:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+        .subcategory {
+            display: none;
+        }
+        .subcategory.active {
+            display: block;
+        }
+        .menu-categories {
+            display: none;
+        }
+        .menu-categories.active {
+            display: block;
+        }
+    </style>
+    <script>
+        function showSubcategories(category) {
+            const allSubcategories = document.querySelectorAll('.subcategory');
+            allSubcategories.forEach(sub => sub.classList.remove('active'));
+
+            const targetSubcategory = document.getElementById(category + '-subcategories');
+            if (targetSubcategory) {
+                targetSubcategory.classList.add('active');
+            }
+        }
+        function toggleMenu() {
+            document.getElementById('menu-categories').classList.toggle('active');
+        }
+    </script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+
+    <header class="bg-white shadow-md p-4 flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+            <img src="../../assets/images/lens.png" alt="Lenskart Logo" class="w-8 h-8">
+            <h1 class="text-lg font-bold text-gray-800">Lenskart</h1>
+        </div>
+        <button class="p-2 bg-blue-500 text-white rounded-lg" onclick="toggleMenu()">Menu</button>
+    </header>
+
+
+    <section class="p-4">
+        <div class="flex items-center bg-white rounded-lg shadow-md p-2">
+            <input 
+                type="text" 
+                placeholder="Search for eyewear..." 
+                class="flex-grow p-2 rounded-l-lg focus:outline-none"
+            >
+            <button class="p-2 bg-blue-500 text-white rounded-r-lg">Search</button>
+        </div>
+    </section>
+    
+    <div id="menu-categories" class="menu-categories p-4  rounded-lg mt-4">
+        <h3 class="text-md font-semibold mb-2">Menu Categories</h3>
+        <ul class="grid grid-cols-8 gap-4">
+            <li class="p-2 bg-gray-200 rounded-lg text-center">Online</li>
+            <li class="p-2 bg-gray-200 rounded-lg text-center">At Store</li>
+            <li class="p-2 bg-gray-200 rounded-lg text-center">At Home</li>
+            <li class="p-2 bg-gray-200 rounded-lg text-center">On Chat</li>
+        </ul>
+    </div>
+
+
+    <section class="p-4">
+        <h2 class="text-lg font-semibold mb-2">Explore Categories</h2>
+        <div class="grid grid-cols-5 gap-4">
+            <div class="bg-white shadow-md rounded-lg p-4 flex flex-col items-center category-card" onclick="showSubcategories('sunglasses')">
+                <img src="../../assets/images/sun.jpeg" alt="Sunglasses" style="display: flex;">
+                <p class="mt-2 text-sm">Sunglasses</p>
+            </div>
+            <div class="bg-white shadow-md rounded-lg p-4 flex flex-col items-center category-card" onclick="showSubcategories('eyeglasses')">
+                <img src="../../assets/images/eye.jpeg" alt="Eyeglasses" style="display: flex;">
+                <p class="mt-2 text-sm">Eyeglasses</p>
+            </div>
+            <div class="bg-white shadow-md rounded-lg p-4 flex flex-col items-center category-card" onclick="showSubcategories('contact-lenses')">
+                <img src="../../assets/images/contact.jpeg" alt="Contact Lenses" style="display: flex; ">
+                <p class="mt-2 text-sm">Contact Lenses</p>
+            </div>
+        </div>
+
+        <div id="sunglasses-subcategories" class="subcategory p-4   rounded-lg mt-4">
+            <h3 class="text-md font-semibold mb-2">Sunglasses Categories</h3>
+            <ul class="grid grid-cols-5 gap-4">
+                <li class="flex flex-col items-center">
+                    <img src="../../assets/images/pol.jpeg" alt="Polarized Sunglasses" style="display: flex;" class="rounded-lg">
+                    <span class="text-sm mt-2">Polarized</span>
+                </li>
+                <li class="flex flex-col items-center">
+                    <img src="../../assets/images/uv.jpeg" alt="UV Protection"  style="display: flex;" class="rounded-lg">
+                    <span class="text-sm mt-2">UV Protection</span>
+                </li>
+                
+                <li class="flex flex-col items-center">
+                    <img src="../../assets/images/spo.jpeg" alt="Sports Sunglasses" style="display: flex;" class="rounded-lg">
+                    <span class="text-sm mt-2">Photochromatic</span>
+                </li>
+       
+                <li class="flex flex-col items-center">
+            <img src="../../assets/images/pro sun.jpeg" alt="progressive Sunglasses" style="display: flex;" class="rounded-lg">
+            <span class="text-sm mt-2">progressive sunglasses</span>
+        </li>
+               <li class="flex flex-col items-center">
+                   <img src="../../assets/images/mir.jpeg" alt="Mirrored sun glasses" style="display: flex;" class="rounded-lg">
+                   <span class="text-sm mt-2">Mirrored</span>
+                </li>
+            </ul>
+        </div>
+
+        <div id="eyeglasses-subcategories" class="subcategory p-4  rounded-lg mt-4">
+            <h3 class="text-md font-semibold mb-2">Eyeglasses Categories</h3>
+            <ul class="grid grid-cols-5 gap-4">
+                <li class="flex flex-col items-center">
+                    <img src="../../assets/images/blue.jpg" alt="Blue Light Blocking"  style="display: flex;" class="rounded-lg">
+                    <span class="text-sm mt-2">Blue Light Blocking</span>
+                </li>
+                <li class="flex flex-col items-center">
+                    <img src="../../assets/images/pro.jpg" alt="Progressive Lenses"  style="display: flex;" class="rounded-lg">
+                    <span class="text-sm mt-2">Progressive</span>
+                </li>
+                <li class="flex flex-col items-center">
+                    <img src="../../assets/images/anti.jpg" alt="Anti-Glare Glasses" style="display: flex;" class="rounded-lg">
+                    <span class="text-sm mt-2">Anti-Glare</span>
+                </li>
+                <li class="flex flex-col items-center">
+                     <img src="../../assets/images/bi.jpeg" alt="Bifocal " style="display: flex;" class="rounded-lg">
+                     <span class="text-sm mt-2">Bifocal</span>
+            </li>
+            <li class="flex flex-col items-center">
+                <img src="../../assets/images/re.jpeg" alt="Reading" style="display: flex;" class="rounded-lg">
+                 <span class="text-sm mt-2">Reading Glasses</span>
+             </li>
+         </ul>  
+    </div>
+        <div id="contact-lenses-subcategories" class="subcategory p-4  rounded-lg mt-4">
+            <h3 class="text-md font-semibold mb-2">Contact Lenses Categories</h3>
+            <ul class="grid grid-cols-5 gap-4">
+                <li class="flex flex-col items-center">
+                    <img src="../../assets/images/dai.jpeg" alt="Daily Wear Lenses"  style="display: flex;" class="rounded-lg">
+                    <span class="text-sm mt-2">Daily Wear</span>
+                </li>
+                <li class="flex flex-col items-center">
+                    <img src="../../assets/images/mon.jpeg" alt="Monthly Lenses" style="display: flex;" class="rounded-lg">
+                    <span class="text-sm mt-2">Monthly</span>
+                </li>
+                <li class="flex flex-col items-center">
+                    <img src="../../assets/images/col.jpeg" alt="Color Contact Lenses"  style="display: flex;" class="rounded-lg">
+                    <span class="text-sm mt-2">Color Lenses</span>
+                </li>
+                <li class="flex flex-col items-center">
+                     <img src="../../assets/images/tro.jpeg" alt="Toric lenses"  style="display: flex;" class="rounded-lg">
+                     <span class="text-sm mt-2">Toric Lenses</span>
+                 </li>
+                 <li class="flex flex-col items-center">
+                    <img src="../../assets/images/cle.avif" alt="Clear Lenses"  style="display: flex;" class="rounded-lg">
+                    <span class="text-sm mt-2">Clear Lenses</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+        <section class="p-4">
+            <h2 class="text-lg font-semibold mb-2">Latest at Lenskart</h2>
+            <div class="grid grid-cols-5 gap-4">
+                <div class="rounded-lg p-4 product-card">
+                    <img src="../../assets/images/spa.jpg" alt="Product 1" class="object-cover rounded" style="display: flex;">
+                    <h3>Inspired By The Space Missions</h3>
+
+                </div>
+                <div class="rounded-lg p-4 product-card">
+                    <img src="../../assets/images/squ.jpeg" alt="Product 2" class="object-cover rounded" style="display: flex;">
+                    <h3>Lets The Games Beign</h3>
+                </div>
+            </div>
+        </section>
+        <br><br><br>
+
+    <footer class="fixed bottom-0 left-0 w-full bg-white shadow-md p-4 flex justify-around sticky-footer">
+        <button class="flex flex-col items-center text-gray-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h11M9 21v-8m0-4a7 7 0 110-14 7 7 0 010 14zm7 4a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            <span class="text-xs">Home</span>
+        </button>
+        <button class="flex flex-col items-center text-gray-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 20h9m-9 0a9 9 0 110-18 9 9 0 010 18zm-3-5l6-6m0 0l-6-6m6 6H3"></path></svg>
+            <span class="text-xs">Search</span>
+        </button>
+        <button class="flex flex-col items-center text-gray-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h10M7 12h10M7 17h10M3 21h18"></path></svg>
+            <span class="text-xs">Menu</span>
+        </button>
+    </footer>
+   
+
+</body>
+</html>
